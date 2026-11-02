@@ -1,0 +1,78 @@
+{
+  "projectId": "42c923d3-83a4-49b0-9865-5975dd618384",
+  "shape": "package",
+  "pkg": "notebuddy-ui",
+  "globalName": "NoteBuddy",
+  "entry": "./design-system/index.ts",
+  "buildCmd": "./node_modules/.bin/tsc -p design-system/tsconfig.json",
+  "provider": {
+    "component": "NoteBuddyProvider"
+  },
+  "componentSrcMap": {
+    "Icons": null,
+    "ConfigProvider": null,
+    "ThemeProvider": null,
+    "NoteBuddyProvider": null
+  },
+  "overrides": {
+    "Modal": {
+      "cardMode": "single",
+      "viewport": "640x360"
+    },
+    "Drawer": {
+      "cardMode": "single",
+      "viewport": "640x420"
+    },
+    "PageLayout": {
+      "cardMode": "column"
+    },
+    "Table": {
+      "cardMode": "column"
+    },
+    "Leaderboard": {
+      "cardMode": "column"
+    },
+    "SideMenu": {
+      "cardMode": "single",
+      "viewport": "320x560"
+    },
+    "Col": {
+      "cardMode": "column"
+    },
+    "Descriptions": {
+      "cardMode": "column"
+    },
+    "Divider": {
+      "cardMode": "column"
+    },
+    "Form": {
+      "cardMode": "column"
+    },
+    "Input": {
+      "cardMode": "column"
+    },
+    "Layout": {
+      "cardMode": "column"
+    },
+    "List": {
+      "cardMode": "column"
+    },
+    "Menu": {
+      "cardMode": "column"
+    },
+    "Row": {
+      "cardMode": "column"
+    },
+    "Select": {
+      "cardMode": "column"
+    },
+    "Steps": {
+      "cardMode": "column"
+    },
+    "Upload": {
+      "cardMode": "column"
+    }
+  },
+  "cssEntry": "global.css",
+  "readmeHeader": ".design-sync/conventions.md"
+}

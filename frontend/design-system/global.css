@@ -1,0 +1,7 @@
+/* NoteBuddy's page font, from src/styles/index.css (Avenir dropped: system-ui always wins first). Ant Design inputs and selects inherit it. */
+body {
+  font-family: system-ui, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
