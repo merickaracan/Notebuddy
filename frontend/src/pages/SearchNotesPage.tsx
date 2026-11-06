@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Layout, Row, Col, Typography, Card, Tag, Empty, Spin, Input, Button, message, Rate, Drawer, Select, Switch, Divider, Badge } from "antd";
 import { SearchOutlined, SafetyCertificateOutlined, FilterOutlined } from "@ant-design/icons";
 import PageLayout from "../components/PageHeader";
@@ -37,7 +37,8 @@ const SearchNotesPage: React.FC = () => {
   const [verifyingNoteId, setVerifyingNoteId] = useState<string | null>(null);
   const [notes, setNotes] = useState<Note[]>([]);
   const [loading, setLoading] = useState(false);
-  const [titleFilter, setTitleFilter] = useState<string>("");
+  const [searchParams] = useSearchParams();
+  const [titleFilter, setTitleFilter] = useState<string>(searchParams.get("q") ?? "");
   const [authorFilter, setAuthorFilter] = useState<string>("");
   const [filterDrawerOpen, setFilterDrawerOpen] = useState(false);
   const [sortBy, setSortBy] = useState<SortOption>("default");

@@ -1,0 +1,30 @@
+/* App-wide base styles. Colours and component styling come from src/theme.ts. */
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Cards that lift on hover. */
+.nb-lift {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.nb-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -8px rgba(67, 97, 238, 0.25);
+}
+
+/* Gentle entrance for dashboard sections. */
+@keyframes nb-fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.nb-fade-up {
+  animation: nb-fade-up 0.35s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nb-lift, .nb-lift:hover { transition: none; transform: none; }
+  .nb-fade-up { animation: none; }
+}

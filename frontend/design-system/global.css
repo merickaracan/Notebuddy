@@ -1,7 +1,3 @@
-/* NoteBuddy's page font, from src/styles/index.css (Avenir dropped: system-ui always wins first). Ant Design inputs and selects inherit it. */
-body {
-  font-family: system-ui, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* NoteBuddy's page font and hover effects, from src/styles/global.css. */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import "../src/styles/global.css";

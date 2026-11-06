@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Layout, Menu, Button, Typography, message } from "antd";
+import { Layout, Menu, Button, Typography, message, theme } from "antd";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -17,6 +17,7 @@ import {
   HomeOutlined,
 } from "@ant-design/icons";
 import { useTheme } from "./ThemeContext";
+import { brand } from "../theme";
 import { logout } from "../api/auth";
 
 const { Sider } = Layout;
@@ -28,6 +29,7 @@ const SideMenu: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { isDark, toggleTheme } = useTheme();
+  const { token } = theme.useToken();
   
   const storedUser = localStorage.getItem("user");
   const currentUser = storedUser ? JSON.parse(storedUser) : null;
@@ -116,8 +118,8 @@ const SideMenu: React.FC = () => {
       width={220}
       collapsedWidth={64}
       style={{
-        background: isDark ? "#1f1f1f" : "#fff",
-        borderRight: isDark ? "1px solid #303030" : "1px solid #e8e8e8",
+        background: token.colorBgContainer,
+        borderRight: `1px solid ${token.colorBorderSecondary}`,
         height: "100vh",
         position: "sticky",
         top: 0,
@@ -134,19 +136,39 @@ const SideMenu: React.FC = () => {
           alignItems: "center",
           justifyContent: collapsed ? "center" : "space-between",
           padding: collapsed ? "16px 0" : "16px 20px",
-          borderBottom: isDark ? "1px solid #303030" : "1px solid #e8e8e8",
+          borderBottom: `1px solid ${token.colorBorderSecondary}`,
+          height: 64,
+          boxSizing: "border-box",
         }}
       >
         {!collapsed && (
-          <Text strong style={{ fontSize: 16, color: isDark ? "#4da3ff" : "#0b5ed7" }}>
-            Notebuddy
-          </Text>
+          <span style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <span
+              aria-hidden
+              style={{
+                width: 28,
+                height: 28,
+                borderRadius: 8,
+                background: brand.gradient,
+                color: "#fff",
+                display: "grid",
+                placeItems: "center",
+                fontWeight: 700,
+                fontSize: 14,
+              }}
+            >
+              N
+            </span>
+            <Text strong style={{ fontSize: 16 }}>
+              NoteBuddy
+            </Text>
+          </span>
         )}
         <Button
           type="text"
           icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
           onClick={() => setCollapsed(!collapsed)}
-          style={{ color: isDark ? "#fff" : "#333" }}
+          style={{ color: token.colorTextSecondary }}
         />
       </div>
 
@@ -158,11 +180,7 @@ const SideMenu: React.FC = () => {
             icon={<PlusOutlined />}
             block
             size={collapsed ? "middle" : "large"}
-            style={{
-              backgroundColor: isDark ? "#4da3ff" : "#0b5ed7",
-              borderColor: isDark ? "#4da3ff" : "#0b5ed7",
-              borderRadius: 8,
-            }}
+            style={{ background: brand.gradient, border: "none", borderRadius: 10 }}
             onClick={() => navigate("/create-note")}
           >
             {!collapsed && "Create Note"}
@@ -185,7 +203,7 @@ const SideMenu: React.FC = () => {
       {/* Bottom actions */}
       <div
         style={{
-          borderTop: isDark ? "1px solid #303030" : "1px solid #e8e8e8",
+          borderTop: `1px solid ${token.colorBorderSecondary}`,
           padding: collapsed ? "12px 8px" : "12px 16px",
           display: "flex",
           flexDirection: "column",
@@ -199,7 +217,7 @@ const SideMenu: React.FC = () => {
           onClick={() => navigate("/")}
           style={{
             textAlign: "left",
-            color: isDark ? "#fff" : "#333",
+            color: token.colorTextSecondary,
             display: "flex",
             alignItems: "center",
             justifyContent: collapsed ? "center" : "flex-start",
@@ -214,7 +232,7 @@ const SideMenu: React.FC = () => {
           onClick={toggleTheme}
           style={{
             textAlign: "left",
-            color: isDark ? "#fff" : "#333",
+            color: token.colorTextSecondary,
             display: "flex",
             alignItems: "center",
             justifyContent: collapsed ? "center" : "flex-start",

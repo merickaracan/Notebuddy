@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { ThemeProvider, useTheme } from './components/ThemeContext';
-import { ConfigProvider, theme } from "antd";
+import { ConfigProvider } from "antd";
+import { getThemeConfig } from "./theme";
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -48,7 +49,7 @@ function AppContent() {
   }
 
   return (
-    <ConfigProvider theme={{algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm,}}>
+    <ConfigProvider theme={getThemeConfig(isDark)}>
       <Router>
       <Routes>
         <Route path="/" element={<Home />} />

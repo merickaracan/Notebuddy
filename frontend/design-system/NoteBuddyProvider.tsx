@@ -1,7 +1,8 @@
 import React from "react";
-import { ConfigProvider, theme } from "antd";
+import { ConfigProvider } from "antd";
 import { MemoryRouter } from "react-router-dom";
 import { ThemeProvider, useTheme } from "../src/components/ThemeContext";
+import { getThemeConfig } from "../src/theme";
 
 interface NoteBuddyProviderProps {
   children: React.ReactNode;
@@ -9,11 +10,11 @@ interface NoteBuddyProviderProps {
   initialPath?: string;
 }
 
-// Mirrors App.tsx: Ant Design's light/dark algorithm follows NoteBuddy's theme toggle.
+// Mirrors App.tsx: NoteBuddy's Ant Design theme, following the light/dark toggle.
 const ThemedConfig: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isDark } = useTheme();
   return (
-    <ConfigProvider theme={{ algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm }}>
+    <ConfigProvider theme={getThemeConfig(isDark)}>
       {children}
     </ConfigProvider>
   );
